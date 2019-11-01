@@ -1,9 +1,11 @@
 <template>
     <nav>
-        <nuxt-link to="/" exact>Home</nuxt-link>
+        <nuxt-link to="/" exact>App Name</nuxt-link>
         <div class="flex-grow"></div>
-        <nuxt-link v-if="!isAuthenticated" to="/auth/login">Login</nuxt-link>
-        <nuxt-link v-else to="/auth/logout">Logout</nuxt-link>
+        <nuxt-link v-if="!isAuthenticated" to="/auth/login" class="nav-link"
+            >Log in
+        </nuxt-link>
+        <nuxt-link v-else to="/auth/logout" class="nav-link">Log out</nuxt-link>
     </nav>
 </template>
 
@@ -21,12 +23,12 @@ export default {
 <style scoped>
 nav {
     @apply flex;
-    @apply text-xl;
+    @apply text-lg;
 }
 a {
     @apply px-1;
 }
-a.nuxt-link-active {
+.nav-link.nuxt-link-active {
     color: #333;
     border-bottom: 1px solid #333;
     font-weight: 600;
