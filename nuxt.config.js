@@ -19,6 +19,12 @@ export default {
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
+    /**
+     * Customize the router
+     */
+    router: {
+        middleware: 'check-auth'
+    },
     /*
      ** Customize the progress-bar color
      */
