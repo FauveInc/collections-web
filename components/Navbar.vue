@@ -24,8 +24,9 @@
             </button>
         </div>
         <div
+            v-show="showMenu"
             id="menu-items"
-            class="w-full hidden lg:block lg:flex lg:items-center lg:w-auto"
+            class="w-full lg:block lg:flex lg:items-center lg:w-auto"
         >
             <div class="text-sm lg:flex-grow">
                 <nuxt-link
@@ -50,14 +51,24 @@
 <script>
 export default {
     name: 'Navbar',
+    data() {
+        return {
+            showMenu: false
+        };
+    },
     computed: {
         isAuthenticated() {
             return this.$store.getters.isAuthenticated;
         }
     },
+    watch: {
+        $route(to, from) {
+            this.showMenu = false;
+        }
+    },
     methods: {
         menuClick() {
-            document.querySelector('#menu-items').classList.toggle('hidden');
+            this.showMenu = !this.showMenu;
         }
     }
 };
