@@ -1,11 +1,49 @@
 <template>
-    <nav>
-        <nuxt-link to="/" exact>App Name</nuxt-link>
+    <nav
+        class="text-lg flex items-center p-6 justify-between flex-wrap bg-teal-500"
+    >
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <span class="font-semibold text-xl tracking-tight">
+                <nuxt-link to="/" exact>App Name</nuxt-link>
+            </span>
+        </div>
         <div class="flex-grow"></div>
-        <nuxt-link v-if="!isAuthenticated" to="/auth/login" class="nav-link"
-            >Log in
-        </nuxt-link>
-        <nuxt-link v-else to="/auth/logout" class="nav-link">Log out</nuxt-link>
+        <div class="block lg:hidden">
+            <button
+                class="flex items-center px-3 py-2 rounded border text-teal-200 border-teal-400 hover:text-white hover:border-white"
+                @click="menuClick"
+            >
+                <svg
+                    class="fill-current h-3 w-3"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </button>
+        </div>
+        <div
+            id="menu-items"
+            class="w-full hidden lg:block lg:flex lg:items-center lg:w-auto"
+        >
+            <div class="text-sm lg:flex-grow">
+                <nuxt-link
+                    v-if="!isAuthenticated"
+                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                    to="/auth/login"
+                >
+                    Log in
+                </nuxt-link>
+                <nuxt-link
+                    v-else
+                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                    to="/auth/logout"
+                >
+                    Log out
+                </nuxt-link>
+            </div>
+        </div>
     </nav>
 </template>
 
@@ -16,21 +54,11 @@ export default {
         isAuthenticated() {
             return this.$store.getters.isAuthenticated;
         }
+    },
+    methods: {
+        menuClick() {
+            document.querySelector('#menu-items').classList.toggle('hidden');
+        }
     }
 };
 </script>
-
-<style scoped>
-nav {
-    @apply flex;
-    @apply text-lg;
-}
-a {
-    @apply px-1;
-}
-.nav-link.nuxt-link-active {
-    color: #333;
-    border-bottom: 1px solid #333;
-    font-weight: 600;
-}
-</style>
