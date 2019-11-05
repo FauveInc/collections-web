@@ -53,17 +53,12 @@ export default {
     name: 'Navbar',
     data() {
         return {
-            showMenu: false
+            showMenu: true
         };
     },
     computed: {
         isAuthenticated() {
             return this.$store.getters.isAuthenticated;
-        }
-    },
-    watch: {
-        $route(to, from) {
-            this.showMenu = false;
         }
     },
     methods: {
