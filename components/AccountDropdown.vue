@@ -49,6 +49,11 @@ export default {
             isOpen: false
         };
     },
+    watch: {
+        $route(to, from) {
+            this.isOpen = false;
+        }
+    },
     mounted() {
         const handleEscape = (e) => {
             if (e.key === 'Esc' || e.key === 'Escape') {
