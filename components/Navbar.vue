@@ -1,59 +1,99 @@
 <template>
-    <nav
-        class="text-lg flex items-center p-6 justify-between flex-wrap bg-teal-500"
+    <header
+        class="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
     >
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-            <span class="font-semibold text-xl tracking-tight">
-                <nuxt-link to="/" exact>App Name</nuxt-link>
-            </span>
-        </div>
-        <div class="flex-grow"></div>
-        <div class="block lg:hidden">
-            <button
-                class="flex items-center px-3 py-2 rounded border text-teal-200 border-teal-400 hover:text-white hover:border-white"
-                @click="menuClick"
-            >
-                <svg
-                    class="fill-current h-3 w-3"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
+        <div class="flex items-center justify-between px-4 py-3 sm:p-0">
+            <div class="text-white">
+                <nuxt-link to="/">Finances</nuxt-link>
+            </div>
+            <div class="sm:hidden">
+                <button
+                    type="button"
+                    class="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
+                    @click="isOpen = !isOpen"
                 >
-                    <title>Menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                </svg>
-            </button>
-        </div>
-        <div
-            v-show="showMenu"
-            id="menu-items"
-            class="w-full lg:block lg:flex lg:items-center lg:w-auto"
-        >
-            <div class="text-sm lg:flex-grow">
-                <nuxt-link
-                    v-if="!isAuthenticated"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-                    to="/auth/login"
-                >
-                    Log in
-                </nuxt-link>
-                <nuxt-link
-                    v-else
-                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-                    to="/auth/logout"
-                >
-                    Log out
-                </nuxt-link>
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <path
+                            v-if="isOpen"
+                            fill-rule="evenodd"
+                            d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                        />
+                        <path
+                            v-if="!isOpen"
+                            fill-rule="evenodd"
+                            d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                        />
+                    </svg>
+                </button>
             </div>
         </div>
-    </nav>
+        <nav :class="isOpen ? 'block' : 'hidden'" class="sm:block">
+            <div class="px-2 pt-2 pb-4 sm:flex sm:p-0">
+                <nuxt-link
+                    to="#"
+                    class="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800"
+                >
+                    List your property
+                </nuxt-link>
+                <nuxt-link
+                    to="#"
+                    class="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"
+                >
+                    Trips
+                </nuxt-link>
+                <nuxt-link
+                    to="#"
+                    class="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"
+                >
+                    Messages
+                </nuxt-link>
+                <AccountDropdown class="hidden sm:block sm:ml-6" />
+            </div>
+            <div class="px-4 py-5 border-t border-gray-800 sm:hidden">
+                <div class="flex items-center">
+                    <img
+                        class="h-8 w-8 border-2 border-gray-600 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
+                        alt="Your avatar"
+                    />
+                    <span class="ml-3 font-semibold text-white">Jane Doe</span>
+                </div>
+                <div class="mt-4">
+                    <nuxt-link
+                        to="#"
+                        class="block text-gray-400 hover:text-white"
+                    >
+                        Account settings
+                    </nuxt-link>
+                    <nuxt-link
+                        to="#"
+                        class="mt-2 block text-gray-400 hover:text-white"
+                    >
+                        Support
+                    </nuxt-link>
+                    <nuxt-link
+                        to="#"
+                        class="mt-2 block text-gray-400 hover:text-white"
+                    >
+                        Sign out
+                    </nuxt-link>
+                </div>
+            </div>
+        </nav>
+    </header>
 </template>
 
 <script>
+import AccountDropdown from '~/components/AccountDropdown';
+
 export default {
     name: 'Navbar',
+    components: {
+        AccountDropdown
+    },
     data() {
         return {
-            showMenu: true
+            isOpen: false
         };
     },
     computed: {

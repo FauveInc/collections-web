@@ -19,6 +19,14 @@ const getOptions = (container) => {
     return {
         container,
         closable: false,
+        avatar: null,
+        allowShowPassword: true,
+        languageDictionary: {
+            title: ''
+        },
+        theme: {
+            primaryColor: '#33658a'
+        },
         allowedConnections: ['Username-Password-Authentication'],
         auth: {
             responseType: 'token id_token',
