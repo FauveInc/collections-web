@@ -61,7 +61,7 @@
                 </div>
                 <div class="mt-4">
                     <nuxt-link
-                        to="#"
+                        to="/account/settings"
                         class="block text-gray-400 hover:text-white"
                     >
                         Account settings
