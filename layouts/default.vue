@@ -1,7 +1,9 @@
 <template>
     <div>
         <navbar />
-        <nuxt class="border-solid border-red" />
+        <div class="container mx-auto mt-5">
+            <nuxt />
+        </div>
     </div>
 </template>
 
