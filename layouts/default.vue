@@ -1,7 +1,7 @@
 <template>
     <div>
         <navbar />
-        <div class="container mx-auto mt-5">
+        <div class="container mx-auto mt-5 px-4">
             <nuxt />
         </div>
     </div>
