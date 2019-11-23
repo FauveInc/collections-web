@@ -1,4 +1,6 @@
-# collections-web
+# Collections
+
+[![CircleCI](https://circleci.com/gh/FauveInc/collections-web/tree/master.svg?style=svg)](https://circleci.com/gh/FauveInc/collections-web/tree/master)
 
 > Shared Bookshelfs
 
