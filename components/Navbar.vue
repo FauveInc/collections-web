@@ -5,7 +5,7 @@
         >
             <div class="flex items-center justify-between px-4 py-3 sm:p-0">
                 <div class="text-white font-semibold text-xl">
-                    <nuxt-link to="/">Finances</nuxt-link>
+                    <nuxt-link to="/">Collections</nuxt-link>
                 </div>
                 <div class="sm:hidden">
                     <button

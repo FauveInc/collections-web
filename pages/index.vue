@@ -3,10 +3,10 @@
         <div>
             <logo />
             <h1 class="title">
-                finances-web
+                collections-web
             </h1>
             <h2 class="subtitle">
-                Automated personal finances
+                Shared bookshelves
             </h2>
             <div class="links">
                 <a

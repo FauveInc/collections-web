@@ -1,6 +1,6 @@
-# finances-web
+# collections-web
 
-> Automated personal finances
+> Shared Bookshelfs
 
 ## Build Setup
 
