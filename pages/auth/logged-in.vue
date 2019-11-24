@@ -12,7 +12,7 @@ export default {
             this.$router.replace('/auth/login');
         }
         setToken(token);
-        this.$router.replace('/dashboard');
+        this.$router.replace('/home');
     }
 };
 </script>
