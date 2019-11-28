@@ -11,8 +11,16 @@ export default {
     middleware: 'authenticated',
     data() {
         return {
-            testvar: process.env.API_BASE
+            testvar: null
         };
+    },
+    async mounted() {
+        const json = await this.$axios.$get(
+            `${process.env.API_BASE}/api/collections/test`
+        );
+        if (json.success) {
+            this.testvar = json.message;
+        }
     }
 };
 </script>
