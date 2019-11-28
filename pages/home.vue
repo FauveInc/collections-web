@@ -1,18 +1,18 @@
 <template>
     <div>
         <h1>Home</h1>
-        <Collections />
+        <h2>{{ testvar }}</h2>
     </div>
 </template>
 
 <script>
-import Collections from '~/components/Collections';
-
 export default {
     name: 'Home',
     middleware: 'authenticated',
-    components: {
-        Collections
+    data() {
+        return {
+            testvar: process.env.API_BASE
+        };
     }
 };
 </script>

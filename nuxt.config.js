@@ -1,3 +1,5 @@
+require('./env.config');
+
 export default {
     mode: 'spa',
     /*
@@ -18,6 +20,9 @@ export default {
             }
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    },
+    env: {
+        API_BASE: process.env.API_BASE || 'default'
     },
     /**
      * Customize the router
