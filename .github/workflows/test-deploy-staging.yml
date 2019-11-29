@@ -1,0 +1,19 @@
+name: Test and Deploy Staging
+on: 
+  push:
+    branches-ignore: master
+jobs: 
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v1
+      - name: Setup Node
+        run: npm install
+      - name: Run Tests
+        run: echo Run Tests
+      - name: Generate Staging
+        run: npm run generate-staging
+      - name: Deploy to Staging
+        if: github.ref == 'refs/heads/staging' && job.status == 'success'
+        run: now --name collectionsapp-staging --prod --token=${{ secrets.ZEIT_TOKEN }}
+      
