@@ -15,5 +15,5 @@ jobs:
         run: npm run generate-staging
       - name: Deploy to Staging
         if: github.ref == 'refs/heads/staging' && job.status == 'success'
-        run: now --name collectionsapp-staging --prod --token=${{ secrets.ZEIT_TOKEN }}
+        run: now ./dist --name collectionsapp-staging --prod --token=${{ secrets.ZEIT_TOKEN }}
       
