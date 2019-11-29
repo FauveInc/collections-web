@@ -15,5 +15,5 @@ jobs:
         run: npm run generate
       - name: Deploy to Production
         if: github.ref == 'refs/heads/master' && job.status == 'success'
-        run: now --name collectionsapp --prod --token=${{ secrets.ZEIT_TOKEN }}
+        run: now ./dist --name collectionsapp --prod --token=${{ secrets.ZEIT_TOKEN }}
       
