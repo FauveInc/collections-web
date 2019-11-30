@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             testvar: null,
-            APIBASE: procee.env.API_BASE
+            APIBASE: process.env.API_BASE
         };
     },
     async mounted() {
