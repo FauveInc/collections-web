@@ -2,6 +2,7 @@
     <div>
         <h1>Home</h1>
         <h2>{{ testvar }}</h2>
+        <p>{{ APIBASE }}</p>
     </div>
 </template>
 
@@ -11,7 +12,8 @@ export default {
     middleware: 'authenticated',
     data() {
         return {
-            testvar: null
+            testvar: null,
+            APIBASE: procee.env.API_BASE
         };
     },
     async mounted() {
