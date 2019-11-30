@@ -2,7 +2,6 @@
     <div>
         <h1>Home</h1>
         <h2>{{ testvar }}</h2>
-        <p>{{ APIBASE }}</p>
     </div>
 </template>
 
@@ -12,8 +11,7 @@ export default {
     middleware: 'authenticated',
     data() {
         return {
-            testvar: null,
-            APIBASE: process.env.API_BASE
+            testvar: null
         };
     },
     async mounted() {
