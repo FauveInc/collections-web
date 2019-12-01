@@ -15,23 +15,26 @@ const getQueryParams = () => {
 export const extractInfoFromHash = () => {
     if (process.SERVER_BUILD) return;
     // eslint-disable-next-line camelcase
-    const { id_token, state } = getQueryParams();
+    const { id_token, state, access_token } = getQueryParams();
     return {
         token: id_token,
-        secret: state
+        secret: state,
+        apiToken: access_token
     };
 };
 
-export const setToken = (token) => {
+export const setTokens = (token, apiToken) => {
     if (process.SERVER_BUILD) return;
     window.localStorage.setItem('token', token);
+    window.localStorage.setItem('apiToken', apiToken);
     window.localStorage.setItem('user', JSON.stringify(jwtDecode(token)));
     Cookie.set('jwt', token);
 };
 
-export const unsetToken = () => {
+export const unsetTokens = () => {
     if (process.SERVER_BUILD) return;
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('apiToken');
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('secret');
     Cookie.remove('jwt');

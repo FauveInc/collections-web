@@ -5,9 +5,10 @@
 <script>
 export default {
     mounted() {
-        const unsetToken = require('~/utils/auth').unsetToken;
+        const unsetTokens = require('~/utils/auth').unsetTokens;
         const logout = require('~/utils/lock').logout;
-        unsetToken();
+        unsetTokens();
+        this.$axios.setToken(false);
         logout();
     }
 };
