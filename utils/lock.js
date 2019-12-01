@@ -34,7 +34,8 @@ const getOptions = (container) => {
             params: {
                 scope: 'openid profile email',
                 state: secret
-            }
+            },
+            audience: 'https://collectionsapp.herokuapp.com'
         }
     };
 };
