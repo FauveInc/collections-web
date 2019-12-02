@@ -16,7 +16,7 @@ export default {
     },
     async mounted() {
         const json = await this.$axios.$get(
-            `${process.env.API_BASE}/api/collections/test`
+            `${process.env.API_BASE}/api/collections/user/${this.$store.state.user.sub}`
         );
         if (json.success) {
             this.testvar = json.message;
